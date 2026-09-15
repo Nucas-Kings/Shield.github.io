@@ -1,1 +1,703 @@
 # Shield.github.io
+[dashboard.html](https://github.com/user-attachments/files/32256989/dashboard.html)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SHIELD | Officer Dashboard</title>
+
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- MAIN STYLESHEET -->
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- =================================================
+         DASHBOARD HEADER
+    ================================================== -->
+
+    <header class="dashboard-header">
+
+
+        <!-- LOGO + COMPANY NAME -->
+
+        <div class="dashboard-brand">
+
+
+            <!-- NEW SHIELD LOGO -->
+
+            <div class="brand-logo small">
+
+                <img
+                    src="./images/LOGO.png"
+                    alt="SHIELD Security Services Logo"
+                >
+
+            </div>
+
+
+            <!-- COMPANY NAME -->
+
+            <div>
+
+                <h1>
+                    SHIELD
+                </h1>
+
+                <p>
+                    Officer Portal
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGNED IN USER -->
+
+        <div class="dashboard-user">
+
+            <div class="signed-in-user">
+
+                <span>
+                    Signed in as
+                </span>
+
+                <strong id="officerName">
+                    Officer
+                </strong>
+
+            </div>
+
+
+            <!-- LOGOUT BUTTON -->
+
+            <button
+                id="logoutBtn"
+                class="logout-button"
+                type="button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MAIN DASHBOARD CONTENT
+    ================================================== -->
+
+    <main class="dashboard-container">
+
+
+        <!-- =================================================
+             WELCOME SECTION
+        ================================================== -->
+
+        <section class="welcome-banner">
+
+
+            <div>
+
+                <span class="section-label light">
+                    Officer Dashboard
+                </span>
+
+
+                <h2>
+
+                    Welcome,
+
+                    <span id="officerNameWelcome">
+                        Officer
+                    </span>
+
+                </h2>
+
+
+                <p>
+                    Manage your shift and attendance
+                    from your SHIELD officer portal.
+                </p>
+
+            </div>
+
+
+            <!-- LIVE DATE AND TIME -->
+
+            <div class="live-time-card">
+
+                <span id="currentDate">
+                    Loading date...
+                </span>
+
+                <strong id="currentTime">
+                    --:--:--
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             EMPLOYEE INFORMATION
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Employee Information
+                </span>
+
+                <h2>
+                    Today's Assignment
+                </h2>
+
+            </div>
+
+
+            <div class="profile-grid">
+
+
+                <!-- EMPLOYEE ID -->
+
+                <article class="profile-card blue-card">
+
+                    <span>
+                        Employee ID
+                    </span>
+
+                    <strong id="employeeIdText">
+                        --
+                    </strong>
+
+                </article>
+
+
+                <!-- POSITION -->
+
+                <article class="profile-card purple-card">
+
+                    <span>
+                        Position
+                    </span>
+
+                    <strong id="roleText">
+                        --
+                    </strong>
+
+                </article>
+
+
+                <!-- ASSIGNED SITE -->
+
+                <article class="profile-card cyan-card">
+
+                    <span>
+                        Assigned Site
+                    </span>
+
+                    <strong id="siteText">
+                        --
+                    </strong>
+
+                </article>
+
+
+                <!-- SHIFT -->
+
+                <article class="profile-card gold-card">
+
+                    <span>
+                        Shift
+                    </span>
+
+                    <strong id="shiftText">
+                        --
+                    </strong>
+
+                </article>
+
+
+                <!-- SUPERVISOR -->
+
+                <article class="profile-card pink-card">
+
+                    <span>
+                        Supervisor
+                    </span>
+
+                    <strong id="supervisorText">
+                        --
+                    </strong>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TIME CLOCK
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Attendance
+                </span>
+
+                <h2>
+                    Time Clock
+                </h2>
+
+            </div>
+
+
+            <div class="time-clock-grid">
+
+
+                <!-- CURRENT STATUS -->
+
+                <article class="clock-status-card">
+
+                    <p>
+                        Current Status
+                    </p>
+
+
+                    <div
+                        id="statusIndicator"
+                        class="status-indicator status-clocked-out"
+                    >
+
+                        <span class="status-dot"></span>
+
+
+                        <strong id="statusText">
+                            CLOCKED OUT
+                        </strong>
+
+                    </div>
+
+
+                    <!-- TOTAL WORKED -->
+
+                    <div class="worked-time-box">
+
+                        <span>
+                            Total Worked
+                        </span>
+
+                        <strong id="totalWorked">
+                            00:00:00
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- TIME INFORMATION -->
+
+                <article class="time-details-card">
+
+
+                    <!-- CLOCK IN TIME -->
+
+                    <div class="time-detail">
+
+                        <span>
+                            Clock In
+                        </span>
+
+                        <strong id="clockInTime">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <!-- BREAK TIME -->
+
+                    <div class="time-detail">
+
+                        <span>
+                            Break Time
+                        </span>
+
+                        <strong id="breakTime">
+                            00:00:00
+                        </strong>
+
+                    </div>
+
+
+                    <!-- CLOCK OUT TIME -->
+
+                    <div class="time-detail">
+
+                        <span>
+                            Clock Out
+                        </span>
+
+                        <strong id="clockOutTime">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+            </div>
+
+
+            <!-- =================================================
+                 CLOCK BUTTONS
+            ================================================== -->
+
+            <div class="clock-buttons">
+
+
+                <!-- CLOCK IN -->
+
+                <button
+                    id="clockInBtn"
+                    class="clock-button clock-in"
+                    type="button"
+                >
+                    Clock In
+                </button>
+
+
+                <!-- START BREAK -->
+
+                <button
+                    id="startBreakBtn"
+                    class="clock-button start-break"
+                    type="button"
+                >
+                    Start Break
+                </button>
+
+
+                <!-- END BREAK -->
+
+                <button
+                    id="endBreakBtn"
+                    class="clock-button end-break"
+                    type="button"
+                >
+                    End Break
+                </button>
+
+
+                <!-- CLOCK OUT -->
+
+                <button
+                    id="clockOutBtn"
+                    class="clock-button clock-out"
+                    type="button"
+                >
+                    Clock Out
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACTIVITY HISTORY
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Attendance History
+                </span>
+
+                <h2>
+                    Recent Activity
+                </h2>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+
+                <table class="activity-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Activity
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Time
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="activityTableBody">
+
+                        <tr>
+
+                            <td colspan="4">
+
+                                No activity recorded yet.
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TIME CORRECTION REQUEST
+        ================================================== -->
+
+        <section class="dashboard-section correction-section">
+
+
+            <div class="section-heading">
+
+                <span class="section-label">
+                    Time Assistance
+                </span>
+
+                <h2>
+                    Report a Time Issue
+                </h2>
+
+                <p>
+                    Submit a request if your recorded
+                    time is incorrect.
+                </p>
+
+            </div>
+
+
+            <form id="correctionForm">
+
+
+                <!-- ISSUE TYPE -->
+
+                <div class="form-group">
+
+
+                    <label for="correctionType">
+
+                        Issue Type
+
+                    </label>
+
+
+                    <select
+                        id="correctionType"
+                        required
+                    >
+
+
+                        <option value="">
+
+                            Select an issue
+
+                        </option>
+
+
+                        <option value="Forgot Clock In">
+
+                            Forgot to Clock In
+
+                        </option>
+
+
+                        <option value="Forgot Clock Out">
+
+                            Forgot to Clock Out
+
+                        </option>
+
+
+                        <option value="Incorrect Time">
+
+                            Incorrect Clock Time
+
+                        </option>
+
+
+                        <option value="Break Issue">
+
+                            Break Issue
+
+                        </option>
+
+
+                        <option value="Other">
+
+                            Other
+
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+                <!-- EXPLANATION -->
+
+                <div class="form-group">
+
+
+                    <label for="correctionMessage">
+
+                        Explanation
+
+                    </label>
+
+
+                    <textarea
+                        id="correctionMessage"
+                        rows="5"
+                        placeholder="Explain what happened..."
+                        required
+                    ></textarea>
+
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="correction-button"
+                >
+
+                    Submit Correction Request
+
+                </button>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer class="dashboard-footer">
+
+
+        <strong>
+
+            SHIELD Security Services
+
+        </strong>
+
+
+        <span>
+
+            Employee Time & Attendance Portal
+
+        </span>
+
+
+    </footer>
+
+
+    <!-- =================================================
+         DASHBOARD JAVASCRIPT
+    ================================================== -->
+
+    <script src="./dashboard.js"></script>
+
+
+</body>
+
+</html>
