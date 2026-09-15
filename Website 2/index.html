@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SHIELD | Officer Login</title>
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Nunito+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main Stylesheet -->
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <!-- =========================================
+             LEFT SIDE
+        ========================================== -->
+
+        <section class="login-brand-section">
+
+            <div class="brand">
+
+                <div class="brand-logo">
+                    <img src="./images/LOGO.png" alt="SHIELD Logo">
+                </div>
+
+                <div>
+                    <h1>SHIELD</h1>
+                    <p>Security Services</p>
+                </div>
+
+            </div>
+
+
+            <div class="brand-content">
+
+                <span class="eyebrow">
+                    Officer Management System
+                </span>
+
+                <h2>
+                    Secure attendance and workforce management.
+                </h2>
+
+                <p>
+                    SHIELD gives security officers a simple
+                    way to clock in, clock out, manage breaks,
+                    review assignments, and report time issues.
+                </p>
+
+
+                <div class="login-features">
+
+                    <article class="feature-card">
+
+                        <span class="feature-number">
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Secure Login
+                            </h3>
+
+                            <p>
+                                Access your personal officer
+                                portal using assigned credentials.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <span class="feature-number">
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Time Clock
+                            </h3>
+
+                            <p>
+                                Record clock-in, clock-out,
+                                and break activity.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <span class="feature-number">
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Shift Information
+                            </h3>
+
+                            <p>
+                                See your assigned site,
+                                schedule, and supervisor.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RIGHT SIDE
+        ========================================== -->
+
+        <section class="login-form-section">
+
+            <div class="login-card">
+
+                <div class="login-card-header">
+
+                    <span class="section-label">
+                        Employee Portal
+                    </span>
+
+                    <h2>
+                        Officer Sign In
+                    </h2>
+
+                    <p>
+                        Enter your SHIELD employee credentials.
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+                    <!-- EMPLOYEE ID -->
+
+                    <div class="form-group">
+
+                        <label for="employeeId">
+                            Employee ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="employeeId"
+                            name="employeeId"
+                            placeholder="SHIELD-123"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOGIN OPTIONS -->
+
+                    <div class="login-options">
+
+                        <label class="remember-row">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>
+                                Remember Employee ID
+                            </span>
+
+                        </label>
+
+
+                        <button
+                            type="button"
+                            id="forgotPassword"
+                            class="forgot-password"
+                        >
+                            Forgot Password?
+                        </button>
+
+                    </div>
+
+
+                    <!-- ERROR MESSAGE -->
+
+                    <p
+                        id="loginError"
+                        class="login-error"
+                        aria-live="polite"
+                    ></p>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+                        Sign In to SHIELD
+                    </button>
+
+                </form>
+
+
+                <!-- =========================================
+                     DEMO ACCOUNT
+                ========================================== -->
+
+                <div class="demo-box">
+
+                    <h3>
+                        Prototype Demo Account
+                    </h3>
+
+                    <p>
+                        Employee ID:
+                        <strong>SHIELD-123</strong>
+                    </p>
+
+                    <p>
+                        Password:
+                        <strong>Ayomide28</strong>
+                    </p>
+
+                </div>
+
+
+                <div class="login-footer">
+
+                    <p>
+                        Authorized SHIELD personnel only.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         NOTIFICATION
+    ========================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        aria-live="polite"
+    ></div>
+
+
+    <!-- LOGIN SCRIPT -->
+
+    <script src="./login.js"></script>
+
+</body>
+
+</html>
