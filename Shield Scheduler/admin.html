@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SHIELD | Administrator
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+</head>
+
+<body>
+
+<header class="app-header">
+
+    <div class="brand-lockup">
+
+        <img
+            src="./images/LOGO.png"
+            alt="SHIELD Logo"
+        >
+
+        <div>
+            <strong>SHIELD</strong>
+            <span>Admin Scheduler</span>
+        </div>
+
+    </div>
+
+    <div class="header-account">
+
+        <span
+            id="adminNameHeader"
+        >
+            Administrator
+        </span>
+
+        <button
+            id="logoutBtn"
+            class="secondary-button"
+            type="button"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+<main class="dashboard">
+
+    <section class="welcome-banner">
+
+        <div>
+            <span class="eyebrow">
+                Administration
+            </span>
+
+            <h1>
+                SHIELD Scheduler
+            </h1>
+
+            <p>
+                Manage employees, locations,
+                schedules, and attendance.
+            </p>
+        </div>
+
+        <div class="date-clock">
+            <strong id="currentDate"></strong>
+            <span id="currentTime"></span>
+        </div>
+
+    </section>
+
+    <section class="stats-grid">
+
+        <article class="stat-card">
+            <span>Total Employees</span>
+            <strong id="totalEmployees">0</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Scheduled Shifts</span>
+            <strong id="totalShifts">0</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Upcoming Shifts</span>
+            <strong id="upcomingShifts">0</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Clocked In</span>
+            <strong id="clockedInNow">0</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Completed Entries</span>
+            <strong id="completedEntries">0</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Recorded Hours</span>
+            <strong id="recordedHours">0m</strong>
+        </article>
+
+    </section>
+
+    <!-- CREATE SHIFT -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Scheduling
+                </span>
+
+                <h2 id="shiftFormTitle">
+                    Create Shift
+                </h2>
+            </div>
+
+        </div>
+
+        <form
+            id="shiftForm"
+            class="form-grid"
+        >
+
+            <input
+                id="editingShiftId"
+                type="hidden"
+            >
+
+            <label class="form-field">
+
+                <span>Employee</span>
+
+                <select
+                    id="shiftEmployee"
+                    required
+                ></select>
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Date</span>
+
+                <input
+                    id="shiftDate"
+                    type="date"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Start Time</span>
+
+                <input
+                    id="shiftStart"
+                    type="time"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>End Time</span>
+
+                <input
+                    id="shiftEnd"
+                    type="time"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Site</span>
+
+                <select
+                    id="shiftSite"
+                    required
+                ></select>
+
+            </label>
+
+            <label class="form-field form-field-wide">
+
+                <span>Notes</span>
+
+                <textarea
+                    id="shiftNotes"
+                    rows="3"
+                    placeholder="Optional assignment notes"
+                ></textarea>
+
+            </label>
+
+            <div class="form-actions form-field-wide">
+
+                <button
+                    id="saveShiftBtn"
+                    class="primary-button"
+                    type="submit"
+                >
+                    Save Shift
+                </button>
+
+                <button
+                    id="cancelEditBtn"
+                    class="secondary-button hidden"
+                    type="button"
+                >
+                    Cancel Edit
+                </button>
+
+            </div>
+
+            <p
+                id="shiftMessage"
+                class="form-message form-field-wide"
+            ></p>
+
+        </form>
+
+    </section>
+
+    <!-- EMPLOYEE ACCOUNTS -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Personnel
+                </span>
+
+                <h2 id="employeeFormTitle">
+                    Add Employee Account
+                </h2>
+
+                <p class="section-copy">
+                    Create employees or update
+                    their assigned site and position.
+                </p>
+            </div>
+
+        </div>
+
+        <form
+            id="employeeForm"
+            class="form-grid"
+        >
+
+            <label class="form-field">
+
+                <span>Employee Name</span>
+
+                <input
+                    id="newEmployeeName"
+                    type="text"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Employee ID</span>
+
+                <input
+                    id="newEmployeeId"
+                    type="text"
+                    placeholder="SHIELD-127"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Password</span>
+
+                <input
+                    id="newEmployeePassword"
+                    type="password"
+                    minlength="8"
+                    placeholder="Create password"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Position</span>
+
+                <input
+                    id="newEmployeeRole"
+                    type="text"
+                    value="Security Officer"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Default Site</span>
+
+                <select
+                    id="newEmployeeSite"
+                    required
+                ></select>
+
+            </label>
+
+            <div class="form-actions">
+
+                <button
+                    id="employeeSubmitBtn"
+                    class="primary-button"
+                    type="submit"
+                >
+                    Create Employee Account
+                </button>
+
+                <button
+                    id="cancelEmployeeEditBtn"
+                    class="secondary-button hidden"
+                    type="button"
+                >
+                    Cancel Edit
+                </button>
+
+            </div>
+
+            <p
+                id="employeeMessage"
+                class="form-message form-field-wide"
+            ></p>
+
+        </form>
+
+    </section>
+
+    <!-- SITE MANAGEMENT -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Locations
+                </span>
+
+                <h2>
+                    Site Management
+                </h2>
+
+                <p class="section-copy">
+                    Configure locations now.
+                    GPS enforcement can be enabled
+                    later when geofencing is activated.
+                </p>
+            </div>
+
+        </div>
+
+        <form
+            id="siteForm"
+            class="form-grid"
+        >
+
+            <input
+                id="editingSiteId"
+                type="hidden"
+            >
+
+            <label class="form-field">
+
+                <span>Site Name</span>
+
+                <input
+                    id="siteName"
+                    type="text"
+                    required
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Address</span>
+
+                <input
+                    id="siteAddress"
+                    type="text"
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Latitude</span>
+
+                <input
+                    id="siteLatitude"
+                    type="number"
+                    step="any"
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Longitude</span>
+
+                <input
+                    id="siteLongitude"
+                    type="number"
+                    step="any"
+                >
+
+            </label>
+
+            <label class="form-field">
+
+                <span>Radius (meters)</span>
+
+                <input
+                    id="siteRadius"
+                    type="number"
+                    min="25"
+                    value="200"
+                    required
+                >
+
+            </label>
+
+            <label class="checkbox-field">
+
+                <input
+                    id="siteGeofenceEnabled"
+                    type="checkbox"
+                >
+
+                <span>
+                    Geofence Enabled
+                </span>
+
+            </label>
+
+            <div class="form-actions form-field-wide">
+
+                <button
+                    id="saveSiteBtn"
+                    class="primary-button"
+                    type="submit"
+                >
+                    Add Site
+                </button>
+
+                <button
+                    id="cancelSiteEditBtn"
+                    class="secondary-button hidden"
+                    type="button"
+                >
+                    Cancel Edit
+                </button>
+
+            </div>
+
+            <p
+                id="siteMessage"
+                class="form-message form-field-wide"
+            ></p>
+
+        </form>
+
+        <div class="table-wrap">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Site</th>
+                        <th>Address</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Radius</th>
+                        <th>Geofence</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="siteTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- ADMIN CALENDAR -->
+
+    <section class="panel dashboard-section calendar-panel">
+
+        <details
+            class="calendar-disclosure"
+            open
+        >
+
+            <summary class="calendar-summary">
+
+                <div>
+                    <span class="eyebrow">
+                        Calendar
+                    </span>
+
+                    <h2>
+                        Team Schedule Calendar
+                    </h2>
+
+                    <p class="section-copy">
+                        Click a date to see everyone
+                        scheduled that day.
+                    </p>
+                </div>
+
+                <span class="calendar-summary-toggle">
+                    Show / Hide
+                </span>
+
+            </summary>
+
+            <div class="calendar-toolbar">
+
+                <div class="calendar-navigation">
+
+                    <button
+                        id="adminCalendarPrevBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        ← Previous
+                    </button>
+
+                    <button
+                        id="adminCalendarTodayBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Today
+                    </button>
+
+                    <button
+                        id="adminCalendarNextBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+                <h3
+                    id="adminCalendarMonthLabel"
+                    class="calendar-month-label"
+                >
+                    Month
+                </h3>
+
+                <div class="calendar-filters">
+
+                    <label class="form-field">
+
+                        <span>Employee</span>
+
+                        <select
+                            id="adminCalendarEmployeeFilter"
+                        >
+                            <option value="all">
+                                All Employees
+                            </option>
+                        </select>
+
+                    </label>
+
+                    <label class="form-field">
+
+                        <span>Site</span>
+
+                        <select
+                            id="adminCalendarSiteFilter"
+                        >
+                            <option value="all">
+                                All Sites
+                            </option>
+                        </select>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <p
+                id="adminCalendarStatus"
+                class="calendar-status"
+            ></p>
+
+            <div class="calendar-grid-scroll">
+
+                <div class="calendar-board">
+
+                    <div class="calendar-weekdays">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+
+                    <div
+                        id="adminCalendarGrid"
+                        class="calendar-grid"
+                    ></div>
+
+                </div>
+
+            </div>
+
+            <div class="calendar-selected-panel">
+
+                <span class="eyebrow">
+                    Selected Date
+                </span>
+
+                <h3
+                    id="adminCalendarSelectedDate"
+                >
+                    Selected Date
+                </h3>
+
+                <div
+                    id="adminCalendarDetails"
+                    class="calendar-details"
+                ></div>
+
+            </div>
+
+        </details>
+
+    </section>
+
+    <!-- ALL SHIFTS -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading split">
+
+            <div>
+                <span class="eyebrow">
+                    Scheduling
+                </span>
+
+                <h2>
+                    All Officer Shifts
+                </h2>
+            </div>
+
+            <select
+                id="scheduleEmployeeFilter"
+            >
+                <option value="all">
+                    All Employees
+                </option>
+            </select>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Site</th>
+                        <th>Notes</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="scheduleTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- TIME & ATTENDANCE -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Attendance
+                </span>
+
+                <h2>
+                    Time & Attendance
+                </h2>
+            </div>
+
+            <div class="section-filters">
+
+                <select
+                    id="attendanceEmployeeFilter"
+                >
+                    <option value="all">
+                        All Employees
+                    </option>
+                </select>
+
+                <select
+                    id="attendanceStatusFilter"
+                >
+                    <option value="all">
+                        All Statuses
+                    </option>
+
+                    <option value="clocked-in">
+                        Clocked In
+                    </option>
+
+                    <option value="on-break">
+                        On Break
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                    <option value="auto-clock-out">
+                        Auto Clock-Out
+                    </option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Site</th>
+                        <th>Scheduled</th>
+                        <th>Clock In</th>
+                        <th>Clock Out</th>
+                        <th>Break</th>
+                        <th>On Site</th>
+                        <th>Worked</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="attendanceTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <!-- EMPLOYEE ACCOUNT LIST -->
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Accounts
+                </span>
+
+                <h2>
+                    Employee Accounts
+                </h2>
+            </div>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Employee ID</th>
+                        <th>Position</th>
+                        <th>Default Site</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="employeeAccountBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="./config.js"></script>
+<script src="./data.js"></script>
+<script src="./admin.js"></script>
+<script src="./calendar.js"></script>
+
+</body>
+</html>

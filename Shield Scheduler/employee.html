@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        SHIELD | Employee Portal
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="./styles.css"
+    >
+
+</head>
+
+<body>
+
+<header class="app-header">
+
+    <div class="brand-lockup">
+
+        <img
+            src="./images/LOGO.png"
+            alt="SHIELD Logo"
+        >
+
+        <div>
+            <strong>SHIELD</strong>
+            <span>Employee Portal</span>
+        </div>
+
+    </div>
+
+    <div class="header-account">
+
+        <span
+            id="employeeNameHeader"
+        >
+            Employee
+        </span>
+
+        <button
+            id="logoutBtn"
+            class="secondary-button"
+            type="button"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+<main class="dashboard">
+
+    <section class="welcome-banner">
+
+        <div>
+
+            <span class="eyebrow">
+                Officer Portal
+            </span>
+
+            <h1>
+                Welcome,
+                <span id="employeeNameWelcome">
+                    Officer
+                </span>
+            </h1>
+
+            <p>
+                View assignments and manage
+                your working time.
+            </p>
+
+        </div>
+
+        <div class="date-clock">
+            <strong id="currentDate"></strong>
+            <span id="currentTime"></span>
+        </div>
+
+    </section>
+
+    <section class="profile-grid">
+
+        <article class="stat-card">
+            <span>Employee ID</span>
+            <strong id="employeeIdText">--</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Position</span>
+            <strong id="employeeRoleText">--</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Default Site</span>
+            <strong id="employeeSiteText">--</strong>
+        </article>
+
+    </section>
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Today
+                </span>
+
+                <h2>
+                    Today's Assignment
+                </h2>
+            </div>
+
+        </div>
+
+        <div
+            id="todaySchedule"
+        ></div>
+
+    </section>
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Attendance
+                </span>
+
+                <h2>
+                    Time Clock
+                </h2>
+            </div>
+
+            <span
+                id="clockStatus"
+                class="clock-status off"
+            >
+                CLOCKED OUT
+            </span>
+
+        </div>
+
+        <div class="clock-info-grid">
+
+            <div>
+                <span>
+                    Scheduled Shift
+                </span>
+
+                <strong
+                    id="scheduledShiftDisplay"
+                >
+                    --
+                </strong>
+            </div>
+
+            <div>
+                <span>
+                    Scheduled End
+                </span>
+
+                <strong
+                    id="scheduledEndDisplay"
+                >
+                    --
+                </strong>
+            </div>
+
+            <div>
+                <span>
+                    Auto Clock-Out
+                </span>
+
+                <strong
+                    id="automaticClockOutDisplay"
+                >
+                    --
+                </strong>
+            </div>
+
+            <div>
+                <span>
+                    Clock In
+                </span>
+
+                <strong
+                    id="clockInDisplay"
+                >
+                    --
+                </strong>
+            </div>
+
+            <div>
+                <span>
+                    Break
+                </span>
+
+                <strong
+                    id="breakDisplay"
+                >
+                    Not on break
+                </strong>
+            </div>
+
+            <div>
+                <span>
+                    Clock Out
+                </span>
+
+                <strong
+                    id="clockOutDisplay"
+                >
+                    --
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="worked-time">
+
+            <span>
+                Current Worked Time
+            </span>
+
+            <strong id="totalWorked">
+                00:00:00
+            </strong>
+
+        </div>
+
+        <div class="clock-actions">
+
+            <button
+                id="clockInBtn"
+                class="primary-button"
+                type="button"
+            >
+                Clock In
+            </button>
+
+            <button
+                id="startBreakBtn"
+                class="secondary-button"
+                type="button"
+                disabled
+            >
+                Start Break
+            </button>
+
+            <button
+                id="endBreakBtn"
+                class="secondary-button"
+                type="button"
+                disabled
+            >
+                End Break
+            </button>
+
+            <button
+                id="clockOutBtn"
+                class="danger-button"
+                type="button"
+                disabled
+            >
+                Clock Out
+            </button>
+
+        </div>
+
+        <p
+            id="clockMessage"
+            class="form-message"
+        ></p>
+
+        <p class="help-text">
+            SHIELD automatically closes an
+            active shift 30 minutes after its
+            scheduled ending time.
+        </p>
+
+    </section>
+
+    <!-- EMPLOYEE CALENDAR -->
+
+    <section class="panel dashboard-section calendar-panel">
+
+        <details
+            class="calendar-disclosure"
+            open
+        >
+
+            <summary class="calendar-summary">
+
+                <div>
+
+                    <span class="eyebrow">
+                        Calendar
+                    </span>
+
+                    <h2>
+                        My Schedule Calendar
+                    </h2>
+
+                    <p class="section-copy">
+                        Click a scheduled date
+                        to see your assignment.
+                    </p>
+
+                </div>
+
+                <span class="calendar-summary-toggle">
+                    Show / Hide
+                </span>
+
+            </summary>
+
+            <div class="calendar-toolbar employee-calendar-toolbar">
+
+                <div class="calendar-navigation">
+
+                    <button
+                        id="employeeCalendarPrevBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        ← Previous
+                    </button>
+
+                    <button
+                        id="employeeCalendarTodayBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Today
+                    </button>
+
+                    <button
+                        id="employeeCalendarNextBtn"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Next →
+                    </button>
+
+                </div>
+
+                <h3
+                    id="employeeCalendarMonthLabel"
+                    class="calendar-month-label"
+                >
+                    Month
+                </h3>
+
+            </div>
+
+            <p
+                id="employeeCalendarStatus"
+                class="calendar-status"
+            ></p>
+
+            <div class="calendar-grid-scroll">
+
+                <div class="calendar-board">
+
+                    <div class="calendar-weekdays">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+
+                    <div
+                        id="employeeCalendarGrid"
+                        class="calendar-grid"
+                    ></div>
+
+                </div>
+
+            </div>
+
+            <div class="calendar-selected-panel">
+
+                <span class="eyebrow">
+                    Selected Date
+                </span>
+
+                <h3
+                    id="employeeCalendarSelectedDate"
+                >
+                    Selected Date
+                </h3>
+
+                <div
+                    id="employeeCalendarDetails"
+                    class="calendar-details"
+                ></div>
+
+            </div>
+
+        </details>
+
+    </section>
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Timesheet
+                </span>
+
+                <h2>
+                    My Timesheet
+                </h2>
+            </div>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Site</th>
+                        <th>Scheduled</th>
+                        <th>Clock In</th>
+                        <th>Clock Out</th>
+                        <th>Break</th>
+                        <th>On Site</th>
+                        <th>Worked</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="employeeTimesheetBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+    <section class="panel dashboard-section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="eyebrow">
+                    Schedule
+                </span>
+
+                <h2>
+                    Your Schedule
+                </h2>
+            </div>
+
+        </div>
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Site</th>
+                        <th>Notes</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody
+                    id="employeeScheduleBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="./config.js"></script>
+<script src="./data.js"></script>
+<script src="./employee.js"></script>
+<script src="./calendar.js"></script>
+
+</body>
+</html>
